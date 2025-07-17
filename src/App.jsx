@@ -35,14 +35,14 @@ import BrandsList from './Components/BrandsList/BrandsList';
 // eslint-disable-next-line no-unused-vars
 let x = createBrowserRouter([
   {path : "" , element:<Layout/>,children:[
-    {index : true,element:<ProtectedRoute><Home/> </ProtectedRoute>},
-    {path:"cart",element:<ProtectedRoute><Cart/></ProtectedRoute>},
+    {index : true,element:<Home/> },
+    {path:"cart",element:<Cart/>},
     {path:"login",element:<Login/>},
     {path:"register",element:<Register/>},
     {path:"forgetpassword",element:<ForgetPassword/>},
-    {path:"products",element:<ProtectedRoute><Products/></ProtectedRoute>},
-    {path:"*",element:<ProtectedRoute><NotFound/></ProtectedRoute>},
-    {path:"brands",element:<ProtectedRoute><Brands/></ProtectedRoute>},
+    {path:"products",element:<Products/>},
+    {path:"*",element:<NotFound/>},
+    {path:"brands",element:<Brands/>},
     {path:"wishlist",element:<ProtectedRoute><Wishlist/></ProtectedRoute>},
     {path:"verifycode",element:<VerifiyCode/>},
     {path:"checkout",element:<ProtectedRoute><Checkout/></ProtectedRoute>},

@@ -44,7 +44,46 @@ export default function Navbar() {
             <img src={logo} className="h-12 w-auto" alt="Logo" />
           </span>
         </div></Link>
-
+ <div className="w-full md:flex-1 flex justify-center order-last md:order-none">
+            <form
+              onSubmit={handleSearch}
+              className="flex w-full max-w-[800px] border border-red-500 rounded overflow-hidden bg-white"
+            >
+              <input
+                type="text"
+                placeholder="Search for products"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="flex-1 px-4 py-2 text-red-600 placeholder-red-500 outline-none text-sm"
+              />
+              <select
+                value={category}
+                onChange={(e) => setCategory(e.target.value)}
+                className="px-3 py-2 text-red-600 bg-white border-l border-red-500 outline-none text-sm"
+              >
+                <option value="">Select Category</option>
+                <option value="All Categories">All Categories</option>
+                <option value="Accessories">Accessories</option>
+                <option value="Alternatives">Alternatives</option>
+                <option value="Disposable E-Cigarette">Disposable E-Cigarette</option>
+                <option value="e Juice">e Juice</option>
+                <option value="Fee Rule">Fee Rule</option>
+                <option value="Mod">Mod</option>
+                <option value="Mystery Bage">Mystery Bage</option>
+                <option value="Nicotine Pouch">Nicotine Pouch</option>
+                <option value="Pod System">Pod System</option>
+                <option value="Rebuildables">Rebuildables</option>
+                <option value="Replacement Coils">Replacement Coils</option>
+                <option value="Replacement Glass">Replacement Glass</option>
+                <option value="Replacement Pods">Replacement Pods</option>
+                <option value="Starter Kits">Starter Kits</option>
+                <option value="Tank">Tank</option>
+              </select>
+              <button type="submit" className="bg-red-600 px-4 py-2 text-white">
+                <i className="fas fa-search"></i>
+              </button>
+            </form>
+          </div>
         {/* ✅ صندوق البحث */}
         {userLogin != null && (
           <div className="w-full md:flex-1 flex justify-center order-last md:order-none">
