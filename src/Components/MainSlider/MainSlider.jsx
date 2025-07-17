@@ -2,17 +2,24 @@ import React, { useEffect, useState } from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import slid1 from '../../../images/slid1.png'
+import slid2 from '../../../images/slid2.png'
+import slid3 from '../../../images/slid3.png'
+import slid4 from '../../../images/slid4.png'
+import slid5 from '../../../images/slid5.png'
+import slid6 from '../../../images/slid6.png'
 
 export default function MainSlider() {
   const [showPopup, setShowPopup] = useState(false);
 
   const sliderImages = [
-    '/images/slid1.png',
-    '/images/slid2.png',
-    '/images/slid3.png',
-    '/images/slid4.png',
-    '/images/slid5.png',
-    '/images/slid6.png',
+   slid1,
+   slid2,
+   slid3,
+   slid4,
+   slid5,
+   slid6,
+
   ];
 
   const settings = {
