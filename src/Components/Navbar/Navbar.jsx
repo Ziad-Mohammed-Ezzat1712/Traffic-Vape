@@ -23,12 +23,12 @@ export default function Navbar() {
     navigate("/login")
   }
 
-  // 🔍 دالة تنفيذ البحث
+  
   function handleSearch(e) {
     e.preventDefault();
     if (!searchTerm.trim()) return;
 
-    // التوجيه مع البارامترات
+    
     navigate(`/search?query=${encodeURIComponent(searchTerm)}&category=${encodeURIComponent(category)}`);
   }
 
@@ -37,12 +37,13 @@ export default function Navbar() {
     <nav className="text-white top-0 right-0 left-0">
       <div className="flex flex-wrap items-center justify-between mx-auto max-w-screen-2xl p-4 gap-y-4">
 
-        {/* ✅ اللوجو */}
+    
+    <Link to='/'>
         <div className="w-full md:w-auto flex justify-center md:justify-start">
           <span className="flex items-center space-x-3 rtl:space-x-reverse">
             <img src={logo} className="h-12 w-auto" alt="Logo" />
           </span>
-        </div>
+        </div></Link>
 
         {/* ✅ صندوق البحث */}
         {userLogin != null && (
