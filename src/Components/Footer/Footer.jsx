@@ -1,54 +1,56 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../../public/logo.png';
-import style from '../Footer/Footer.module.css';
 
 export default function Footer() {
   return (
     <>
-    <footer className={` bg-black h-60 opacity-97 bg-center bg-cover w-100% bottom-0 right-0 left-0 mb-0 border-gray-200 text-white px-6 md:px-12 py-10 overflow-hidden`}>
-      <div className="relative z-10 max-w-screen-2xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10">
-        {/* Logo */}
-        <div className="flex flex-col gap-4 items-start">
-          <img src={logo} alt="Logo" className="h-40 w-auto" />
-        </div>
+      {/* Main Footer */}
+      <footer className="bg-black text-white px-6 md:px-12 py-12">
+        <div className="max-w-screen-2xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-10">
+          {/* Logo */}
+          <div className="flex flex-col gap-4 items-start">
+            <img src={logo} alt="Logo" className="h-20 w-40 object-contain" />
+          </div>
 
-        {/* Contact Info */}
-        <div className="text-center text-md flex flex-col items-end">
-          <h3 className="font-semibold text-lg mb-4">Contact Us</h3>
-          <p className="mb-2">tarfficstudio@gmial.com</p>
-          <p className="mb-2">+20150 0929449‬
-</p>
-          <p>2 Mohamed Zaki Barakat, 8th District, Nasr City, Cairo Governorate 
-</p>
+          {/* Need Help */}
+          <div className="flex flex-col items-start">
+            <h3 className="font-semibold text-lg mb-4">NEED HELP</h3>
+            <p className="mb-2 cursor-pointer hover:underline">Contact Us</p>
+            <p className="mb-2 cursor-pointer hover:underline">Do We Ship To You</p>
+            <p className="mb-2 cursor-pointer hover:underline">Affiliate Program</p>
+            <p className="mb-2 cursor-pointer hover:underline">FAQs</p>
+            <p className="mb-2 cursor-pointer hover:underline">Help Center</p>
+          </div>
 
-          {/* Social Icons */}
-          <div className="flex gap-4 mt-4 text-xl text-white">
-            <Link to="/facebook" className="hover:text-blue-500">
-              <i className="fab fa-facebook-f"></i>
-            </Link>
-            <Link to="/instagram" className="hover:text-pink-500">
-              <i className="fab fa-instagram"></i>
-            </Link>
-            <Link to="/linkedin" className="hover:text-blue-400">
-              <i className="fab fa-linkedin-in"></i>
-            </Link>
-            <Link to="/x" className="hover:text-gray-400">
-              <i className="fab fa-x-twitter"></i>
-            </Link>
+          {/* Info */}
+          <div className="flex flex-col items-start">
+            <h3 className="font-semibold text-lg mb-4">INFO</h3>
+            <p className="mb-2 cursor-pointer hover:underline">About Us</p>
+            <p className="mb-2 cursor-pointer hover:underline">Age Policy</p>
+            <p className="mb-2 cursor-pointer hover:underline">Terms of Service</p>
+            <p className="mb-2 cursor-pointer hover:underline">Privacy Policy</p>
+            <p className="mb-2 cursor-pointer hover:underline">Return Policy</p>
+            <p className="mb-2 cursor-pointer hover:underline">Shipping & Handling</p>
+          </div>
+
+          {/* Blog Posts */}
+          <div className="flex flex-col items-start">
+            <h3 className="font-semibold text-lg mb-4">BLOG POSTS</h3>
+            <p className="mb-2 cursor-pointer hover:underline">Vaping for Beginners</p>
+            <p className="mb-2 cursor-pointer hover:underline">Tips On Buying Your First Vape</p>
+            <p className="mb-2 cursor-pointer hover:underline">All Vape Guides</p>
+            <p className="mb-2 cursor-pointer hover:underline">Mystery Bags</p>
           </div>
         </div>
-      </div>
+      </footer>
 
-      {/* footer bottom */}
-      <div className="relative z-10 mt-10 border-t border-white border-opacity-20 pt-4 flex flex-col md:flex-row justify-between items-center text-xs text-gray-400 gap-4">
-        <div className="flex items-center gap-2">
-          <span>©</span>
-          <span>Traffic Studio All Copy Right</span>
+      {/* Copyright Bottom Bar */}
+      <div className="bg-red-600 p-6 text-white text-center md:text-left">
+        <div className="max-w-screen-2xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+          <h1 className="text-lg font-semibold">© 2025 Puff Stuff Group.com</h1>
         </div>
-  
       </div>
-    </footer>
     </>
   );
 }

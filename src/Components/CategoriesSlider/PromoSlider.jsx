@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 export default function PromoSlider() {
   const [timeLeft, setTimeLeft] = useState({ hours: 0, minutes: 0, seconds: 0 });
 
-  // تاريخ انتهاء العرض (مثال: بعد ساعة)
+  // تاريخ انتهاء العرض (بعد ساعة مثلاً)
   const endTime = new Date().getTime() + 3600 * 1000;
 
   useEffect(() => {
@@ -27,13 +27,25 @@ export default function PromoSlider() {
   }, []);
 
   return (
-    <section className="bg-gradient-to-r from-red-900 to-red-600 text-white py-6 px-4 text-center">
-      <h2 className="text-2xl font-bold mb-2">⚡ Limited Time Offer!</h2>
-      <p className="mb-3">Buy 2 Get 1 Free on All Disposables</p>
-      <div className="flex justify-center gap-4 text-lg font-mono">
-        <span>{timeLeft.hours.toString().padStart(2, '0')}h</span>
-        <span>{timeLeft.minutes.toString().padStart(2, '0')}m</span>
-        <span>{timeLeft.seconds.toString().padStart(2, '0')}s</span>
+    <section className="bg-[#FD0000] text-white py-0 px-4 text-center">
+      <div className="max-w-screen-xl mx-auto">
+        <h2 className="text-xl md:text-2xl font-bold mb-2">⚡ Limited Time Offer!</h2>
+        <p className="text-sm md:text-base mb-4">Get 5 for 500 EGP with our Mystery Bags!</p>
+
+        <div className="flex justify-center gap-6 text-base md:text-lg font-mono font-semibold">
+          <div className="flex flex-col items-center">
+            <span className="text-2xl">{timeLeft.hours.toString().padStart(2, '0')}</span>
+            <span className="text-xs">Hours</span>
+          </div>
+          <div className="flex flex-col items-center">
+            <span className="text-2xl">{timeLeft.minutes.toString().padStart(2, '0')}</span>
+            <span className="text-xs">Minutes</span>
+          </div>
+          <div className="flex flex-col items-center">
+            <span className="text-2xl">{timeLeft.seconds.toString().padStart(2, '0')}</span>
+            <span className="text-xs">Seconds</span>
+          </div>
+        </div>
       </div>
     </section>
   );

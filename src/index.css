@@ -1,6 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+body{
+background: #000;
+ @apply font-poppins;
+}
 
      .row{
 @apply flex flex-wrap py-5 px-0
@@ -26,6 +30,7 @@
     --rating-color:#ffc908;
     
 }
+
 
 body{
     font-family: var(--font-family) !important;

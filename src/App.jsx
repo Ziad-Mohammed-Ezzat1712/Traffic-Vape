@@ -22,7 +22,9 @@ import WishListContextProvider from './Context/WishListContext';
 import Wishlist from './Components/wishlist/wishlist';
 import BrandContextProvider from './Context/BrandContext';
 import VerifiyCode from './Components/VerifiyCode/VerifiyCode';
-
+import DashboardLayout from './Components/DashboardLayout/DashboardLayout';
+import ProductsDashboard from './Components/ProductsDashboard/ProductsDashboard';
+import BrandsList from './Components/BrandsList/BrandsList';
 
 
 
@@ -47,9 +49,16 @@ let x = createBrowserRouter([
     {path:"allorders",element:<ProtectedRoute><Allorders/></ProtectedRoute>},
     {path:"productdetalis/:id/:category",element:<ProtectedRoute><ProductDetalis/></ProtectedRoute>},
     {path:"categories",element:<ProtectedRoute><Categories/></ProtectedRoute>},
+    {path:"brandlist",element:<ProtectedRoute><BrandsList/></ProtectedRoute>},
 
   ]},
-  
+{
+    path: 'kareem',
+    element: <DashboardLayout /> ,
+    children: [
+      { path: 'products', element: <ProductsDashboard /> }
+    ]
+  }
 ]
 
 )
