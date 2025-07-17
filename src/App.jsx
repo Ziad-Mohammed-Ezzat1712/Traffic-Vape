@@ -49,7 +49,7 @@ let x = createBrowserRouter([
     {path:"allorders",element:<ProtectedRoute><Allorders/></ProtectedRoute>},
     {path:"productdetalis/:id/:category",element:<ProtectedRoute><ProductDetalis/></ProtectedRoute>},
     {path:"categories",element:<ProtectedRoute><Categories/></ProtectedRoute>},
-    {path:"brandlist",element:<ProtectedRoute><BrandsList/></ProtectedRoute>},
+    {path:"brandlist",element:<BrandsList/>},
 
   ]},
 {
