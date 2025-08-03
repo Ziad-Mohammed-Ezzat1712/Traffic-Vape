@@ -4,7 +4,7 @@ import img1 from '../../../images/prod1.png';
 import img2 from '../../../images/prod2.png';
 import img3 from '../../../images/prod3.png';
 import img4 from '../../../images/prod4.png';
-
+import { Link } from 'react-router-dom';
 export default function Section2() {
   const products = [
     {
@@ -42,9 +42,12 @@ export default function Section2() {
       {/* Header */}
       <div className="flex justify-between items-center mb-8">
         <h2 className="text-2xl font-bold">TRENDING</h2>
-        <button className="bg-white text-[#FD0000] px-4 py-2 rounded hover:bg-[#FD0000] hover:text-white text-sm font-semibold">
-          View All
-        </button>
+        <Link
+  to="/trending"
+  className="bg-white text-[#FD0000] px-4 py-2 rounded hover:bg-[#FD0000] hover:text-white text-sm font-semibold"
+>
+  View All
+</Link>
       </div>
 
       {/* Product Cards */}

@@ -25,7 +25,11 @@ import VerifiyCode from './Components/VerifiyCode/VerifiyCode';
 import DashboardLayout from './Components/DashboardLayout/DashboardLayout';
 import ProductsDashboard from './Components/ProductsDashboard/ProductsDashboard';
 import BrandsList from './Components/BrandsList/BrandsList';
-
+import PremiumProducts from './Components/PremiumProducts/PremiumProducts';
+import VapingDevices from './Components/VapingDevices/VapingDevices';
+import { CartProvider } from './Context/CartContext1';
+import Trending from './Components/Trending/Trending';
+import OrderConfirmation from './Components/OrderConfirmation/OrderConfirmation';
 
 
 
@@ -42,13 +46,17 @@ let x = createBrowserRouter([
     {path:"forgetpassword",element:<ForgetPassword/>},
     {path:"products",element:<Products/>},
     {path:"*",element:<NotFound/>},
+    {path:"premium-products",element:<PremiumProducts/>},
+    {path:"vaping-devices",element:<VapingDevices/>},
+      { path: '/order-confirmation', element: <OrderConfirmation /> },
+    {path:"trending",element:<Trending/>},
     {path:"brands",element:<Brands/>},
-    {path:"wishlist",element:<ProtectedRoute><Wishlist/></ProtectedRoute>},
+    {path:"wishlist",element:<Wishlist/>},
     {path:"verifycode",element:<VerifiyCode/>},
-    {path:"checkout",element:<ProtectedRoute><Checkout/></ProtectedRoute>},
-    {path:"allorders",element:<ProtectedRoute><Allorders/></ProtectedRoute>},
-    {path:"productdetalis/:id/:category",element:<ProtectedRoute><ProductDetalis/></ProtectedRoute>},
-    {path:"categories",element:<ProtectedRoute><Categories/></ProtectedRoute>},
+    {path:"checkout",element:<Checkout/>},
+    {path:"allorders",element:<Allorders/>},
+    {path:"productdetalis/:id/:category",element:<ProductDetalis/>},
+    {path:"categories",element:<Categories/>},
     {path:"brandlist",element:<BrandsList/>},
 
   ]},
@@ -69,6 +77,7 @@ function App() {
   return(
   
   <>
+  <CartProvider>
   <UserContextProvider>
     <CartContextProvider>
       <WishListContextProvider>
@@ -80,6 +89,7 @@ function App() {
     </CartContextProvider>
   
   </UserContextProvider>
+  </CartProvider>
   </>
   )
 }

@@ -1,18 +1,17 @@
 import React, { useState, useContext } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import logo from "../../../public/logo.png";
 import { UserContext } from '../../Context/UserContext';
-import { CartContext } from '../../Context/CartContext';
 import { WishListContext } from '../../Context/WishListContext';
+import { useCart } from '../../Context/CartContext1';
 import PromoSlider from '../CategoriesSlider/PromoSlider';
 
 export default function Navbar() {
-  let { NumItem } = useContext(CartContext);
-  let { userLogin, setuserLogin } = useContext(UserContext);
-  let { setNumItem2, NumItem2 } = useContext(WishListContext);
+  const { totalItems } = useCart();
+  const { userLogin, setuserLogin } = useContext(UserContext);
+  const { setNumItem2, NumItem2 } = useContext(WishListContext);
 
-  let navigate = useNavigate();
-
+  const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState('');
   const [category, setCategory] = useState('');
   const [menuOpen, setMenuOpen] = useState(false);
@@ -29,20 +28,22 @@ export default function Navbar() {
     navigate(`/search?query=${encodeURIComponent(searchTerm)}&category=${encodeURIComponent(category)}`);
   }
 
+  const navLinkClass = ({ isActive }) =>
+    isActive ? "hover:text-red-500 text-red-500 font-semibold" : "hover:text-red-500 text-white font-semibold";
+
   return (
     <>
       <nav className="text-white top-0 right-0 left-0 bg-black">
         <div className="flex flex-wrap items-center justify-between mx-auto max-w-screen-2xl p-4 gap-y-4">
-          {/* Logo */}
-          <Link to='/'>
+
+          <NavLink to='/'>
             <div className="w-full md:w-auto flex justify-center md:justify-start">
               <span className="flex items-center space-x-3 rtl:space-x-reverse">
                 <img src={logo} className="h-12 w-auto" alt="Logo" />
               </span>
             </div>
-          </Link>
+          </NavLink>
 
-          {/* Hamburger for mobile */}
           <button
             className="md:hidden text-white text-2xl"
             onClick={() => setMenuOpen(!menuOpen)}
@@ -50,7 +51,6 @@ export default function Navbar() {
             <i className="fas fa-bars"></i>
           </button>
 
-          {/* Search Bar */}
           <div className="w-full md:flex-1 flex justify-center order-last md:order-none">
             <form
               onSubmit={handleSearch}
@@ -92,28 +92,26 @@ export default function Navbar() {
             </form>
           </div>
 
-          {/* Desktop Buttons */}
           <div className="hidden md:flex w-full md:w-auto justify-center md:justify-end">
             <ul className="flex gap-4 items-center">
               {userLogin ? (
                 <li><span onClick={signout} className="cursor-pointer font-semibold">Signout</span></li>
               ) : (
                 <>
-                  <li><Link to="login" className='text-white hover:text-white font-semibold'>Login</Link></li>
-                  <li><Link to="register" className='text-white hover:text-white font-semibold'>Register</Link></li>
+                  <li><NavLink to="login" className={navLinkClass}>Login</NavLink></li>
+                  <li><NavLink to="register" className={navLinkClass}>Register</NavLink></li>
                 </>
               )}
-              <Link className="text-white relative hover:text-white" to="cart">
+              <NavLink className="text-white relative hover:text-white" to="cart">
                 <i className="fa-solid fa-cart-shopping"></i>
                 <div className="absolute top-[-13px] right-[-15px] flex items-center justify-center size-5 rounded-full bg-red-600 text-white text-xs font-bold">
-                  {NumItem}
+                  {totalItems}
                 </div>
-              </Link>
+              </NavLink>
             </ul>
           </div>
         </div>
 
-        {/* Mobile Menu */}
         {menuOpen && (
           <div className="md:hidden bg-black text-white text-left px-4 py-3 space-y-4">
             <ul className="space-y-2 text-sm">
@@ -121,30 +119,31 @@ export default function Navbar() {
                 <li><span onClick={signout} className="cursor-pointer font-semibold block">Signout</span></li>
               ) : (
                 <>
-                  <li><Link to="/login" className="block hover:text-red-500 text-white  font-semibold">Login</Link></li>
-                  <li><Link to="/register" className="block hover:text-red-500 text-white  font-semibold">Register</Link></li>
+                  <li><NavLink to="/login" className={navLinkClass}>Login</NavLink></li>
+                  <li><NavLink to="/register" className={navLinkClass}>Register</NavLink></li>
                 </>
               )}
               <li>
-                <Link className="relative inline-block hover:text-red-500 text-white  font-semibold" to="/cart">
+                <NavLink className="relative inline-block hover:text-red-500 text-white font-semibold" to="/cart">
                   <i className="fa-solid fa-cart-shopping"></i>
-                  
-                  <span className="ml-2 text-white  font-semibold bg-red-600 text-xs px-2 py-1 rounded-full">{NumItem}</span>
-                </Link>
+                  <span className="ml-2 text-white font-semibold bg-red-600 text-xs px-2 py-1 rounded-full">
+                    {totalItems}
+                  </span>
+                </NavLink>
               </li>
             </ul>
 
             <div className="border-t border-white pt-3">
               <ul className="flex flex-col gap-2 text-sm font-medium">
-                <li><Link to="/brandlist" className="hover:text-red-500 text-white  font-semibold">Brands</Link></li>
-                <li><Link to="/starter-kit"className="hover:text-red-500 text-white  font-semibold">Starter Kit</Link></li>
-                <li><Link to="/devices"className="hover:text-red-500 text-white  font-semibold">Devices</Link></li>
-                <li><Link to="/tanks"className="hover:text-red-500 text-white  font-semibold">Tanks</Link></li>
-                <li><Link to="/accessories"className="hover:text-red-500 text-white  font-semibold">Accessories</Link></li>
-                <li><Link to="/e-liquids"className="hover:text-red-500 text-white  font-semibold">E-Liquids</Link></li>
-                <li><Link to="/alternatives"className="hover:text-red-500 text-white  font-semibold">Alternatives</Link></li>
-                <li><Link to="/disposable"className="hover:text-red-500 text-white  font-semibold">Disposable</Link></li>
-                <li><Link to="/clearance"className="hover:text-red-500 text-white  font-semibold">Clearance</Link></li>
+                <li><NavLink to="/brandlist" className={navLinkClass}>Brands</NavLink></li>
+                <li><NavLink to="/starter-kit" className={navLinkClass}>Starter Kit</NavLink></li>
+                <li><NavLink to="/vaping-devices" className={navLinkClass}>Devices</NavLink></li>
+                <li><NavLink to="/tanks" className={navLinkClass}>Tanks</NavLink></li>
+                <li><NavLink to="/accessories" className={navLinkClass}>Accessories</NavLink></li>
+                <li><NavLink to="/e-liquids" className={navLinkClass}>E-Liquids</NavLink></li>
+                <li><NavLink to="/alternatives" className={navLinkClass}>Alternatives</NavLink></li>
+                <li><NavLink to="/disposable" className={navLinkClass}>Disposable</NavLink></li>
+                <li><NavLink to="/clearance" className={navLinkClass}>Clearance</NavLink></li>
               </ul>
             </div>
           </div>
@@ -153,19 +152,18 @@ export default function Navbar() {
 
       <PromoSlider />
 
-      {/* Desktop Menu Links */}
       <div className="py-6 border-b border-white hidden md:block">
         <div className="max-w-screen-2xl mx-auto">
           <ul className="flex flex-wrap justify-center text-md gap-6 text-white font-medium">
-            <li><Link to="/brandlist" className="hover:text-red-500 text-white  font-semibold">Brands</Link></li>
-            <li><Link to="/starter-kit" className="hover:text-red-500 text-white  font-semibold">Starter Kit</Link></li>
-            <li><Link to="/devices" className="hover:text-red-500 text-white  font-semibold">Devices</Link></li>
-            <li><Link to="/tanks" className="hover:text-red-500 text-white  font-semibold">Tanks</Link></li>
-            <li><Link to="/accessories" className="hover:text-red-500 text-white  font-semibold">Accessories</Link></li>
-            <li><Link to="/e-liquids" className="hover:text-red-500 text-white  font-semibold">E-Liquids</Link></li>
-            <li><Link to="/alternatives" className="hover:text-red-500 text-white  font-semibold">Alternatives</Link></li>
-            <li><Link to="/disposable" className="hover:text-red-500 text-white  font-semibold">Disposable</Link></li>
-            <li><Link to="/clearance" className="hover:text-red-500 text-white  font-semibold">Clearance</Link></li>
+            <li><NavLink to="/brandlist" className={navLinkClass}>Brands</NavLink></li>
+            <li><NavLink to="/starter-kit" className={navLinkClass}>Starter Kit</NavLink></li>
+            <li><NavLink to="/vaping-devices" className={navLinkClass}>Devices</NavLink></li>
+            <li><NavLink to="/tanks" className={navLinkClass}>Tanks</NavLink></li>
+            <li><NavLink to="/accessories" className={navLinkClass}>Accessories</NavLink></li>
+            <li><NavLink to="/e-liquids" className={navLinkClass}>E-Liquids</NavLink></li>
+            <li><NavLink to="/alternatives" className={navLinkClass}>Alternatives</NavLink></li>
+            <li><NavLink to="/disposable" className={navLinkClass}>Disposable</NavLink></li>
+            <li><NavLink to="/clearance" className={navLinkClass}>Clearance</NavLink></li>
           </ul>
         </div>
       </div>

@@ -48,7 +48,7 @@ export default function Footer() {
       {/* Copyright Bottom Bar */}
       <div className="bg-red-600 p-6 text-white text-center md:text-left">
         <div className="max-w-screen-2xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
-          <h1 className="text-lg font-semibold">© 2025 Puff Stuff Group.com</h1>
+          <h1 className="text-lg font-semibold">Copyright © 2025 Puff Stuff Group.com</h1>
         </div>
       </div>
     </>
