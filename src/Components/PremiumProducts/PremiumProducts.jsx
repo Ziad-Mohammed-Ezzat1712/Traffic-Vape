@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FaStar } from 'react-icons/fa';
 import { useCart } from '../../Context/CartContext1';
-
+import toast from 'react-hot-toast';
 const products = [
   {
     id: 1,
@@ -69,6 +69,15 @@ const products = [
 
 export default function PremiumProducts() {
   const { addToCart } = useCart();
+const [loadingId, setLoadingId] = useState(null); // لتحديد أي زر عليه لودينج
+
+   const handleAddToCart = async (products) => {
+      setLoadingId(products.id);
+      await new Promise((res) => setTimeout(res, 700)); // محاكاة لودينج واقعي
+      addToCart(products);
+      setLoadingId(null);
+      toast.success(`${products.name} added to cart!`);
+    };
   return (
     <div className="bg-black text-white py-12 px-4 md:px-10">
       <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center text-[#FD0000]">
@@ -93,12 +102,43 @@ export default function PremiumProducts() {
                 />
               ))}
             </div>
-           <button
-      onClick={() => addToCart(product)}
-      className="bg-[#FD0000] w-full py-2 rounded-md text-white font-semibold hover:bg-red-700 transition"
-    >
-      Add to Cart
-    </button>
+   <button
+              onClick={() => handleAddToCart(product)}
+              disabled={loadingId === product.id}
+              className={`w-full py-2 rounded-md text-white font-semibold transition ${
+                loadingId === product.id
+                  ? 'bg-gray-600 cursor-not-allowed'
+                  : 'bg-[#FD0000] hover:bg-red-700'
+              }`}
+            >
+              {loadingId === product.id ? (
+                <span className="flex items-center justify-center">
+                  <svg
+                    className="animate-spin h-5 w-5 mr-2 text-white"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                  >
+                    <circle
+                      className="opacity-25"
+                      cx="12"
+                      cy="12"
+                      r="10"
+                      stroke="currentColor"
+                      strokeWidth="4"
+                    ></circle>
+                    <path
+                      className="opacity-75"
+                      fill="currentColor"
+                      d="M4 12a8 8 0 018-8v8H4z"
+                    ></path>
+                  </svg>
+                  Adding...
+                </span>
+              ) : (
+                'Add to Cart'
+              )}
+            </button>
           </div>
         ))}
       </div>

@@ -30,6 +30,14 @@ import VapingDevices from './Components/VapingDevices/VapingDevices';
 import { CartProvider } from './Context/CartContext1';
 import Trending from './Components/Trending/Trending';
 import OrderConfirmation from './Components/OrderConfirmation/OrderConfirmation';
+import VapeReviewsPage from './Components/VapeReviewsPage/VapeReviewsPage';
+import StarterKitsPage from './Components/StarterKitsPage/StarterKitsPage';
+import CategoriesELiquidsPage from './Components/CategoriesE-LiquidsPage/CategoriesE-LiquidsPage';
+import BrandsELiquids from './Components/BrandsE-Liquids/BrandsE-Liquids';
+import ProductsELiquids from './Components/ProductsE-Liquids/ProductsE-Liquids';
+import TanksList from './Components/TanksList/TanksList';
+import CategoriesAccessoriesList from './Components/CategoriesAccessoriesList/CategoriesAccessoriesList';
+import AccessoriesCategory from './Components/AccessoriesCategory/AccessoriesCategory';
 
 
 
@@ -58,6 +66,15 @@ let x = createBrowserRouter([
     {path:"productdetalis/:id/:category",element:<ProductDetalis/>},
     {path:"categories",element:<Categories/>},
     {path:"brandlist",element:<BrandsList/>},
+    {path:"reviews",element:<VapeReviewsPage/>},
+    {path:"shopstartkits",element:<StarterKitsPage/>},
+    {path:"e-liquids",element:<CategoriesELiquidsPage/>},
+    {path:"brandseLiquids/:category",element:<BrandsELiquids/>},
+    {path:"productseLiquids/:brand",element:<ProductsELiquids/>},
+    {path:"tanks",element:<TanksList/>},
+    {path:"accessories",element:<CategoriesAccessoriesList/>},
+    {path:"/accessories/:category",element:<AccessoriesCategory/>},
+
 
   ]},
 {

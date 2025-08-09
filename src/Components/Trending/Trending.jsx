@@ -170,7 +170,7 @@ export default function Trending() {
             <div className="text-left flex-grow">
               <h4 className="text-sm text-gray-400 mb-2">{product.brand}</h4>
               <p className="text-base text-white font-medium mb-2 line-clamp-2">{product.title}</p>
-              <span className="text-[#FD0000] font-semibold text-lg">{`From ${product.price} EGP`}</span>
+              <span className="text-[#FD0000] font-semibold text-lg">{` ${product.price} EGP`}</span>
             </div>
             <button
               onClick={() => handleAddToCart(product)}

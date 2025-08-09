@@ -136,7 +136,7 @@ export default function Navbar() {
             <div className="border-t border-white pt-3">
               <ul className="flex flex-col gap-2 text-sm font-medium">
                 <li><NavLink to="/brandlist" className={navLinkClass}>Brands</NavLink></li>
-                <li><NavLink to="/starter-kit" className={navLinkClass}>Starter Kit</NavLink></li>
+                <li><NavLink to="/shopstartkits" className={navLinkClass}>Starter Kit</NavLink></li>
                 <li><NavLink to="/vaping-devices" className={navLinkClass}>Devices</NavLink></li>
                 <li><NavLink to="/tanks" className={navLinkClass}>Tanks</NavLink></li>
                 <li><NavLink to="/accessories" className={navLinkClass}>Accessories</NavLink></li>
@@ -156,7 +156,7 @@ export default function Navbar() {
         <div className="max-w-screen-2xl mx-auto">
           <ul className="flex flex-wrap justify-center text-md gap-6 text-white font-medium">
             <li><NavLink to="/brandlist" className={navLinkClass}>Brands</NavLink></li>
-            <li><NavLink to="/starter-kit" className={navLinkClass}>Starter Kit</NavLink></li>
+            <li><NavLink to="/shopstartkits" className={navLinkClass}>Starter Kit</NavLink></li>
             <li><NavLink to="/vaping-devices" className={navLinkClass}>Devices</NavLink></li>
             <li><NavLink to="/tanks" className={navLinkClass}>Tanks</NavLink></li>
             <li><NavLink to="/accessories" className={navLinkClass}>Accessories</NavLink></li>

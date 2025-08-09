@@ -5,6 +5,7 @@ import img2 from '../../../images/prod2.png';
 import img3 from '../../../images/prod3.png';
 import img4 from '../../../images/prod4.png';
 import { Link } from 'react-router-dom';
+
 export default function Section2() {
   const products = [
     {

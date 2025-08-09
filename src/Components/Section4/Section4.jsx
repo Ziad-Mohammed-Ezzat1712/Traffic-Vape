@@ -12,7 +12,7 @@ export default function Section4() {
         <img src={img1} alt="Starter Kits" className="w-full h-auto rounded-md" />
         <div className="absolute inset-0 flex flex-col justify-center items-start p-6">
           <h1 className="text-white mb-4 text-2xl md:text-3xl font-semibold">Starter Kits</h1>
-          <Link to="/shop">
+          <Link to="/shopstartkits">
             <button className="bg-[#FD0000] py-2 px-5 rounded-md text-white font-semibold text-lg">
               Shop Now
             </button>
