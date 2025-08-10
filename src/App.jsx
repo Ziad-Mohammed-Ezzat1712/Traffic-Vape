@@ -38,6 +38,9 @@ import ProductsELiquids from './Components/ProductsE-Liquids/ProductsE-Liquids';
 import TanksList from './Components/TanksList/TanksList';
 import CategoriesAccessoriesList from './Components/CategoriesAccessoriesList/CategoriesAccessoriesList';
 import AccessoriesCategory from './Components/AccessoriesCategory/AccessoriesCategory';
+import DisposableVapes from './Components/DisposableVapes/DisposableVapes';
+import Alternatives from './Components/AlternativesDefinition/AlternativesDefinition';
+import Clearance from './Components/Clearance/Clearance';
 
 
 
@@ -74,6 +77,9 @@ let x = createBrowserRouter([
     {path:"tanks",element:<TanksList/>},
     {path:"accessories",element:<CategoriesAccessoriesList/>},
     {path:"/accessories/:category",element:<AccessoriesCategory/>},
+    {path:"disposable",element:<DisposableVapes/>},
+    {path:"alternatives",element:<Alternatives/>},
+    {path:"clearance",element:<Clearance/>},
 
 
   ]},
