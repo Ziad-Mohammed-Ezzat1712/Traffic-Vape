@@ -13,7 +13,9 @@ export default function ProductsDashboard() {
     image: '',
     description: '',
     category: '',
-    
+    nicotine: '',
+    size: '',
+    flavor: '',
   });
   const [isEditing, setIsEditing] = useState(false);
   const [editIndex, setEditIndex] = useState(null);
@@ -39,7 +41,6 @@ export default function ProductsDashboard() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // التنبيه لو الكمية صفر أو أقل
     if (Number(form.quantity) <= 0) {
       toast.error('Quantity must be greater than zero.');
       return;
@@ -68,12 +69,14 @@ export default function ProductsDashboard() {
       image: '',
       description: '',
       category: '',
-      
+      nicotine: '',
+      size: '',
+      flavor: '',
     });
   };
 
   const handleEdit = (index) => {
-    setForm({ ...products[index], gallery: products[index].gallery || [] });
+    setForm({ ...products[index] });
     setIsEditing(true);
     setEditIndex(index);
   };
@@ -146,8 +149,44 @@ export default function ProductsDashboard() {
           <option value="">Select Category</option>
           <option value="Divace">Divace</option>
           <option value="Liquide">Liquide</option>
-          <option value="Accessories"> Accessories</option>
+          <option value="Accessories">Accessories</option>
         </select>
+
+        {/* حقول إضافية للـ Liquide */}
+        {form.category === "Liquide" && (
+          <>
+            <input
+              type="text"
+              placeholder="Nicotine Strength (e.g. 3mg, 6mg)"
+              className="w-full border p-3 rounded"
+              value={form.nicotine}
+              onChange={(e) => setForm({ ...form, nicotine: e.target.value })}
+              required
+            />
+
+            <select
+              className="w-full border p-3 rounded"
+              value={form.size}
+              onChange={(e) => setForm({ ...form, size: e.target.value })}
+              required
+            >
+              <option value="">Select Size</option>
+              <option value="30ml">30ml</option>
+              <option value="60ml">60ml</option>
+              <option value="60ml">100ml</option>
+              <option value="120ml">120ml</option>
+            </select>
+
+            <input
+              type="text"
+              placeholder="Flavor (e.g. Strawberry, Mint)"
+              className="w-full border p-3 rounded"
+              value={form.flavor}
+              onChange={(e) => setForm({ ...form, flavor: e.target.value })}
+              required
+            />
+          </>
+        )}
 
         <textarea
           placeholder="Description"
@@ -172,21 +211,31 @@ export default function ProductsDashboard() {
             <p className="text-gray-600">Brand: {product.brand}</p>
             <p className="text-gray-600">Price: {product.price} EGP</p>
             <p className="text-gray-600">Quantity: {product.quantity}</p>
+
+            {product.category === "Liquide" && (
+              <>
+                <p className="text-gray-600">Nicotine: {product.nicotine}</p>
+                <p className="text-gray-600">Size: {product.size}</p>
+                <p className="text-gray-600">Flavor: {product.flavor}</p>
+              </>
+            )}
+
             <p className="mt-2">{product.description}</p>
             <p className="text-sm text-gray-500 mt-1">Added on: {product.createdAt}</p>
 
-            {/* عرض الجاليري */}
-            {product.gallery && product.gallery.length > 0 && (
-              <div className="mt-4 grid grid-cols-2 gap-2">
-                {product.gallery.map((img, i) => (
-                  <img key={i} src={img} alt={`Gallery ${i}`} className="w-full h-24 object-cover rounded" />
-                ))}
-              </div>
-            )}
-
             <div className="mt-4 flex justify-between">
-              <button onClick={() => handleEdit(index)} className="bg-blue-800 p-2 rounded-xl hover:bg-blue-600 font-bold text-white">Edit</button>
-              <button onClick={() => handleDelete(index)} className="bg-0-800 p-2 rounded-xl hover:bg-red-600 font-bold text-white">Delete</button>
+              <button
+                onClick={() => handleEdit(index)}
+                className="bg-blue-800 p-2 rounded-xl hover:bg-blue-600 font-bold text-white"
+              >
+                Edit
+              </button>
+              <button
+                onClick={() => handleDelete(index)}
+                className="bg-red-800 p-2 rounded-xl hover:bg-red-600 font-bold text-white"
+              >
+                Delete
+              </button>
             </div>
           </div>
         ))}
