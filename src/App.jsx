@@ -27,7 +27,6 @@ import ProductsDashboard from './Components/ProductsDashboard/ProductsDashboard'
 import BrandsList from './Components/BrandsList/BrandsList';
 import PremiumProducts from './Components/PremiumProducts/PremiumProducts';
 import VapingDevices from './Components/VapingDevices/VapingDevices';
-import { CartProvider } from './Context/CartContext1';
 import Trending from './Components/Trending/Trending';
 import OrderConfirmation from './Components/OrderConfirmation/OrderConfirmation';
 import VapeReviewsPage from './Components/VapeReviewsPage/VapeReviewsPage';
@@ -41,6 +40,10 @@ import AccessoriesCategory from './Components/AccessoriesCategory/AccessoriesCat
 import DisposableVapes from './Components/DisposableVapes/DisposableVapes';
 import Alternatives from './Components/AlternativesDefinition/AlternativesDefinition';
 import Clearance from './Components/Clearance/Clearance';
+import NewArrivalsPage from './Components/NewArrivalsPage/NewArrivalsPage';
+import { CartProvider } from './Context/CartContext1';
+import BestSellersPage from './Components/BestSellersPage/BestSellersPage';
+
 
 
 
@@ -80,6 +83,8 @@ let x = createBrowserRouter([
     {path:"disposable",element:<DisposableVapes/>},
     {path:"alternatives",element:<Alternatives/>},
     {path:"clearance",element:<Clearance/>},
+    {path:"new-arrivals",element:<NewArrivalsPage/>},
+    {path:"best-sellers",element:<BestSellersPage/>},
 
 
   ]},

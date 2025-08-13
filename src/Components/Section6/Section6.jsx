@@ -4,8 +4,10 @@ import best1 from '../../../images/best1.png';
 import best2 from '../../../images/best2.png';
 import best3 from '../../../images/best3.png';
 import best4 from '../../../images/best4.png';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function Section6() {
+    const navigate = useNavigate();
   const products = [
     {
       id: 1,
@@ -42,7 +44,10 @@ export default function Section6() {
       {/* Header */}
       <div className="flex justify-between items-center mb-8">
         <h2 className="text-2xl font-bold">BEST SELLERS</h2>
-        <button className="bg-white text-[#FD0000] px-4 py-2 rounded hover:bg-[#FD0000] hover:text-white text-sm font-semibold">
+        <button
+          onClick={() => navigate('/best-sellers')}
+          className="bg-white text-[#FD0000] px-4 py-2 rounded hover:bg-[#FD0000] hover:text-white text-sm font-semibold"
+        >
           View All
         </button>
       </div>

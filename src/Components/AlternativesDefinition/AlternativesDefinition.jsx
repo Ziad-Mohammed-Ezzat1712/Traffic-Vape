@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { useCart } from '../../Context/CartContext1';
+
 import toast from 'react-hot-toast';
+import { useCart } from '../../context/CartContext1';
 
 const alternativesProducts = [
   {
@@ -38,7 +39,7 @@ export default function Alternatives() {
     await new Promise((res) => setTimeout(res, 700));
     addToCart(product);
     setLoadingId(null);
-    toast.success(`${product.name} added to cart!`);
+  toast.success(`${product.name} added to cart!`);
   };
 
   return (

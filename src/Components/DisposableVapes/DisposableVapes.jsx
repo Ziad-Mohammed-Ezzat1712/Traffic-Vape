@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { useCart } from '../../Context/CartContext1';
+
 import toast from 'react-hot-toast';
+import { useCart } from '../../context/CartContext1';
 
 const disposableProducts = [
   {
